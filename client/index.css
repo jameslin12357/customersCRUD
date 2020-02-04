@@ -1,0 +1,19 @@
+.mb-15 {
+margin-bottom: 15px;
+}
+
+.tc {
+text-align: center;
+}
+
+.tr {
+text-align: right;
+}
+
+.fr {
+float: right;
+}
+
+#containerSearch {
+display: inline;
+}
