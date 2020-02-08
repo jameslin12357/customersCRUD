@@ -6,22 +6,22 @@ layui.use(['table','layer'], function(){
         elem: '#test'
         ,url:'http://localhost:3001/customers'
         ,cols: [[
-            {field:'customerId', title: 'CustomerID'}
-            ,{field:'firstName', title: 'Customer First Name'}
-            ,{field:'lastName', title: 'Customer Last Name'}
-            ,{field:'major', title: 'Customer Major'}
-            ,{field:'bio', title: 'Customer Bio'}
-            ,{field:'age', title: 'Customer Age'}
-            ,{field:'grade', title: 'Customer Grade'}
-            ,{field:'gpa', title: 'Customer GPA'}
-            ,{field:'gender', title: 'Customer Gender'}
-            ,{field:'created', title: 'Created'}
-            ,{field:'updated', title: 'Updated'}
-            ,{fixed: 'right', width: 200, title: 'CRUD', align:'center', toolbar: '#barDemo'}        
+            {field:'customerId', title: '顾客ID'}
+            ,{field:'firstName', title: '顾客名'}
+            ,{field:'lastName', title: '顾客姓'}
+            ,{field:'major', title: '顾客专业'}
+            ,{field:'bio', title: '顾客信息'}
+            ,{field:'age', title: '顾客年龄'}
+            ,{field:'grade', title: '顾客分数'}
+            ,{field:'gpa', title: '顾客GPA'}
+            ,{field:'gender', title: '顾客性别'}
+            ,{field:'created', title: '创建日期'}
+            ,{field:'updated', title: '编辑日期'}
+            ,{fixed: 'right', width: 200, title: '操作', align:'center', toolbar: '#barDemo'}        
 ]]
         ,toolbar: '#barDemo2'
         ,page: true
-        ,title: "CustomerCRUD"
+        ,title: "顾客CRUD"
     });
 //监听工具条 
 table.on('tool(test)', function(obj) { //注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
@@ -34,19 +34,19 @@ table.on('tool(test)', function(obj) { //注：tool 是工具条事件名，test
             btn: [],
             maxWidth: 750,
             shade: 0,
-            title: "Customer",
+            title: "顾客",
             content: `<div>
-                             <p><span>CustomerID:</span> <span>${data["customerId"]}</span></p>
-                             <p><span>Customer First Name:</span> <span>${data["firstName"]}</span></p>
-                             <p><span>Customer Last Name:</span> <span>${data["lastName"]}</span></p>
-                             <p><span>Customer Major:</span> <span>${data["major"]}</span></p>
-                             <p><span>Customer Bio:</span> <span>${data["bio"]}</span></p>
-                             <p><span>Customer Age:</span> <span>${data["age"]}</span></p>
-                             <p><span>Customer Grade:</span> <span>${data["grade"]}</span></p>
-                             <p><span>Customer GPA:</span> <span>${data["gpa"]}</span></p>
-                             <p><span>Customer Gender:</span> <span>${data["gender"]}</span></p>
-                             <p><span>Created:</span> <span>${data["created"]}</span></p>
-                             <p><span>Updated:</span> <span>${data["updated"]}</span></p>                            
+                             <p><span>顾客ID:</span> <span>${data["customerId"]}</span></p>
+                             <p><span>顾客名:</span> <span>${data["firstName"]}</span></p>
+                             <p><span>顾客姓:</span> <span>${data["lastName"]}</span></p>
+                             <p><span>顾客专业:</span> <span>${data["major"]}</span></p>
+                             <p><span>顾客信息:</span> <span>${data["bio"]}</span></p>
+                             <p><span>顾客年龄:</span> <span>${data["age"]}</span></p>
+                             <p><span>顾客分数:</span> <span>${data["grade"]}</span></p>
+                             <p><span>顾客GPA:</span> <span>${data["gpa"]}</span></p>
+                             <p><span>顾客性别:</span> <span>${data["gender"]}</span></p>
+                             <p><span>创建日期:</span> <span>${data["created"]}</span></p>
+                             <p><span>编辑日期:</span> <span>${data["updated"]}</span></p>                            
 </div>`
         });
         //layer.msg(JSON.stringify(data));
@@ -56,8 +56,8 @@ table.on('tool(test)', function(obj) { //注：tool 是工具条事件名，test
         layer.open({
             btn: [],
             shade: 0,
-            title: "Delete Customer",
-            content: `<div><div class="mb-15 tc">Confirm delete customer?</div><div class="tr"><button id="buttonDelete" type="submit" class="layui-btn layui-btn-danger">Delete</button></div></div>`
+            title: "删除顾客",
+            content: `<div><div class="mb-15 tc">确定删除顾客?</div><div class="tr"><button id="buttonDelete" type="submit" class="layui-btn layui-btn-danger">删除</button></div></div>`
         });
         document.getElementById("buttonDelete").addEventListener("click", function (e) {
             deleteCustomerPost();
@@ -67,40 +67,40 @@ table.on('tool(test)', function(obj) { //注：tool 是工具条事件名，test
         layer.open({
             btn: [],
             shade: 0,
-            title: "Update Customer",
+            title: "编辑顾客",
             content: `<form class="layui-form layui-form-pane" action="">
                               <div class="layui-form-item">
-                    <label class="layui-form-label">First Name</label>
+                    <label class="layui-form-label">名</label>
                     <div class="layui-input-inline">
                       <input type="text" name="firstName" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required value="${data["firstName"]}">
                     </div>
                   </div>
                   <div class="layui-form-item">
-                    <label class="layui-form-label">Last Name</label>
+                    <label class="layui-form-label">姓</label>
                     <div class="layui-input-inline">
                       <input type="text" name="lastName" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required value="${data["lastName"]}">
                     </div>
                   </div>
                      <div class="layui-form-item">
-                    <label class="layui-form-label">Major</label>
+                    <label class="layui-form-label">专业</label>
                     <div class="layui-input-inline">
                       <input type="text" name="major" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required value="${data["major"]}">
                     </div>
                   </div>
                   <div class="layui-form-item">
-                    <label class="layui-form-label">Bio</label>
+                    <label class="layui-form-label">信息</label>
                     <div class="layui-input-inline">
                       <input type="text" name="bio" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required value="${data["bio"]}">
                     </div>
                   </div>
                      <div class="layui-form-item">
-                    <label class="layui-form-label">Age</label>
+                    <label class="layui-form-label">年龄</label>
                     <div class="layui-input-inline">
                       <input type="text" name="age" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required value="${data["age"]}">
                     </div>
                   </div>
                   <div class="layui-form-item">
-                    <label class="layui-form-label">Grade</label>
+                    <label class="layui-form-label">分数</label>
                     <div class="layui-input-inline">
                       <input type="text" name="grade" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required value="${data["grade"]}">
                     </div>
@@ -112,12 +112,12 @@ table.on('tool(test)', function(obj) { //注：tool 是工具条事件名，test
                     </div>
                   </div>
   <div class="layui-form-item">
-                    <label class="layui-form-label">Gender</label>
+                    <label class="layui-form-label">性别</label>
                     <div class="layui-input-inline">
                       <input type="text" name="gender" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required value="${data["gender"]}">
                     </div>
                   </div>
- <button type="submit" class="layui-btn layui-btn-normal fr">Save</button>
+ <button type="submit" class="layui-btn layui-btn-normal fr">保存</button>
 </form>`
         });
         document.getElementsByTagName("form")[0].addEventListener("submit", function (e) {
@@ -136,57 +136,57 @@ table.on('toolbar(test)', function(obj){
          layer.open({
             btn: [],
             shade: 0,
-            title: "Create Customer",
+            title: "新建顾客",
             content: `<form class="layui-form layui-form-pane" action="">
                    <div class="layui-form-item">
-                    <label class="layui-form-label">First Name</label>
+                    <label class="layui-form-label">名</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="firstName" lay-verify="required" placeholder="Enter first name" autocomplete="off" class="layui-input" required>
+                      <input type="text" name="firstName" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required>
                     </div>
                   </div>
                   <div class="layui-form-item">
-                    <label class="layui-form-label">Last Name</label>
+                    <label class="layui-form-label">姓</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="lastName" lay-verify="required" placeholder="Enter last name" autocomplete="off" class="layui-input"  required>
+                      <input type="text" name="lastName" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required>
                     </div>
                   </div>
                      <div class="layui-form-item">
-                    <label class="layui-form-label">Major</label>
+                    <label class="layui-form-label">专业</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="major" lay-verify="required" placeholder="Enter major" autocomplete="off" class="layui-input" required>
+                      <input type="text" name="major" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required>
                     </div>
                   </div>
                   <div class="layui-form-item">
-                    <label class="layui-form-label">Bio</label>
+                    <label class="layui-form-label">信息</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="bio" lay-verify="required" placeholder="Enter bio" autocomplete="off" class="layui-input"  required>
+                      <input type="text" name="bio" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required>
                     </div>
                   </div>
                      <div class="layui-form-item">
-                    <label class="layui-form-label">Age</label>
+                    <label class="layui-form-label">年龄</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="age" lay-verify="required" placeholder="Enter age" autocomplete="off" class="layui-input" required>
+                      <input type="text" name="age" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input" required>
                     </div>
                   </div>
                   <div class="layui-form-item">
-                    <label class="layui-form-label">Grade</label>
+                    <label class="layui-form-label">分数</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="grade" lay-verify="required" placeholder="Enter grade" autocomplete="off" class="layui-input"  required>
+                      <input type="text" name="grade" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required>
                     </div>
                   </div>
 <div class="layui-form-item">
                     <label class="layui-form-label">GPA</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="gpa" lay-verify="required" placeholder="Enter GPA" autocomplete="off" class="layui-input"  required>
+                      <input type="text" name="gpa" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required>
                     </div>
                   </div>
 <div class="layui-form-item">
-                    <label class="layui-form-label">Gender</label>
+                    <label class="layui-form-label">性别</label>
                     <div class="layui-input-inline">
-                      <input type="text" name="gender" lay-verify="required" placeholder="Enter gender" autocomplete="off" class="layui-input"  required>
+                      <input type="text" name="gender" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input"  required>
                     </div>
                   </div>
- <button type="submit" class="layui-btn layui-btn-normal fr">Save</button>
+ <button type="submit" class="layui-btn layui-btn-normal fr">保存</button>
 </form>`
         });
         document.getElementsByTagName("form")[0].addEventListener("submit", function (e) {
@@ -218,7 +218,7 @@ function editCustomerPost(){
         success: function (data) {
             if (data.code === 1){
                 layer.closeAll();
-                layer.msg("Customer updated");
+                layer.msg("顾客已编辑");
                 table.reload('test', {
   //url: '/api/table/search'
   //,where: {} //设定异步数据接口的额外参数
@@ -240,7 +240,7 @@ function deleteCustomerPost() {
         success: function (data) {
             if (data.code === 1) {
                 layer.closeAll();
-                layer.msg("Customer deleted");
+                layer.msg("顾客已删除");
                 table.reload('test', { 
   //url: '/api/table/search'
   //,where: {} //设定异步数据接口的额外参数
@@ -276,7 +276,7 @@ function createCustomerPost(){
         success: function (data) {
             if (data.code === 1){
                 layer.closeAll();
-                layer.msg("Customer created");
+                layer.msg("顾客已创建");
                 //$('#dg').datagrid('reload');
                  table.reload('test', {
   //url: '/api/table/search'
